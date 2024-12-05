@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel: CircularTimerViewModel = CircularTimerViewModel(interval: CircularTimerViewModel.Time(hours: 1, minutes: 0, seconds: 5).interval, progress: 0.0)
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
-            CircularProgressBar(progress: 1.0, text: "TEST")
+            CircularProgressBar(progress: viewModel.progress, text: viewModel.textFromTimeInterval())
+            CircularTimer(viewModel: viewModel)
         }
         .padding()
     }

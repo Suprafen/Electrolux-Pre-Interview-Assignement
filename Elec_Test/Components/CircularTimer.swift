@@ -27,40 +27,32 @@ import Combine
  */
 
 struct CircularTimer: View {
-
-    @ObservedObject var viewModel: CircularTimerViewModel
+    // Mark property as private since we can pass value to init
+    @ObservedObject private var viewModel: CircularTimerViewModel
     private let strokeWidth = CGFloat(8)
-
-    init(time: CircularTimerViewModel.Time, progress: CGFloat) {
-
-        self.init(interval: time.interval, progress: progress)
-    }
-
-    init(interval: TimeInterval, progress: CGFloat) {
-
-        self._viewModel = StateObject(wrappedValue: CircularTimerViewModel(interval: interval, progress: progress))
+    
+    init(viewModel: CircularTimerViewModel) {
+        self.viewModel = viewModel
     }
 
     var body: some View {
-
         GeometryReader { proxy in
-
             VStack(spacing: 16) {
                 ZStack {
 
                     Circle()
                         .stroke(lineWidth: strokeWidth)
-                        .foregroundColor(Color(0xFF323333 as! CGColor))
+                        .foregroundColor(.el_darkGray)
 
                     Circle()
-                        .trim(from: 0, to: (1.0,  viewModel.progress))
+                        .trim(from: 0, to: viewModel.progress)
                         .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round, lineJoin: .round))
-                        .foregroundColor(Color(0xFF4f758b as! CGColor))
+                        .foregroundColor(.el_BlueGray)
 
                     Circle()
-                        .trim(from: 0, to: min((1.0,  viewModel.progress), 0.001))
+                        .trim(from: 0, to: viewModel.progress)
                         .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .square, lineJoin: .round))
-                        .foregroundColor(Color(0xFF4f758b as! CGColor))
+                        .foregroundColor(.el_BlueGray)
                 }
                 .frame(width: proxy.size.width * 0.7, alignment: .center)
                 .rotationEffect(.degrees(90))
@@ -80,8 +72,6 @@ struct CircularTimer: View {
 struct CircularTimer_Previews: PreviewProvider {
 
     static var previews: some View {
-
-        CircularTimer(time: CircularTimerViewModel.Time(hours: 0, minutes: 0, seconds: 30),
-                      progress: 0.0)
+        CircularTimer(viewModel: CircularTimerViewModel(interval: 10, progress: 0.7))
     }
 }

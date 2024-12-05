@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E20FB0192D018A890074FF09 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20FB0182D018A840074FF09 /* Color+Extension.swift */; };
 		E8244E44290B586100C7B1EA /* Elec_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8244E43290B586100C7B1EA /* Elec_TestApp.swift */; };
 		E8244E46290B586100C7B1EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8244E45290B586100C7B1EA /* ContentView.swift */; };
 		E8244E48290B586400C7B1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8244E47290B586400C7B1EA /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E20FB0182D018A840074FF09 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E8244E40290B586100C7B1EA /* Elec_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elec_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8244E43290B586100C7B1EA /* Elec_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elec_TestApp.swift; sourceTree = "<group>"; };
 		E8244E45290B586100C7B1EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				E8244E71290B5A3100C7B1EA /* CircularTimer.swift */,
 				E8244E73290B5A8800C7B1EA /* CircularTimerViewModel.swift */,
 				E8244E75290B5AB700C7B1EA /* Int+Extensions.swift */,
+				E20FB0182D018A840074FF09 /* Color+Extension.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8244E74290B5A8800C7B1EA /* CircularTimerViewModel.swift in Sources */,
+				E20FB0192D018A890074FF09 /* Color+Extension.swift in Sources */,
 				E8244E72290B5A3100C7B1EA /* CircularTimer.swift in Sources */,
 				E8244E46290B586100C7B1EA /* ContentView.swift in Sources */,
 				E8244E76290B5AB700C7B1EA /* Int+Extensions.swift in Sources */,
@@ -439,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Elec_Test/Preview Content\"";
-				DEVELOPMENT_TEAM = CF637RE8WQ;
+				DEVELOPMENT_TEAM = KWBL32UU3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -477,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Elec_Test/Preview Content\"";
-				DEVELOPMENT_TEAM = CF637RE8WQ;
+				DEVELOPMENT_TEAM = KWBL32UU3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

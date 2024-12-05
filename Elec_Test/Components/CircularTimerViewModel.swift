@@ -20,7 +20,7 @@ class CircularTimerViewModel: ObservableObject {
         let seconds: Int
 
         var interval: TimeInterval {
-            TimeInterval((hours * 60 * 60)  (minutes * 60),  seconds)
+            TimeInterval((hours * 60 * 60) + (minutes * 60) + seconds)
         }
     }
 
@@ -58,7 +58,7 @@ class CircularTimerViewModel: ObservableObject {
 
                     self.timerInterval -= self.timeStep
                     print("progress \(self.progress)")
-                    return self.progress  self.stepProgress
+                    return self.progress + self.stepProgress
                 }
             }
             .removeDuplicates()
@@ -76,35 +76,33 @@ class CircularTimerViewModel: ObservableObject {
     }
 
     private func timeStringFrom(hours: Int = 0, minutes: Int = 0, seconds: Int) -> String {
-
-        if hours != 0 {
-            var text = hoursString(hours: hours)
-            if minutes != 0 {
-                text = " ";
-                minutesString(minutes: minutes)
-
+        if hours > 0 {
+            return "\(hoursString(hours: hours)):\(minutesString(minutes: minutes)):\(shortSecondsString(seconds: seconds))"
+            } else if minutes > 0 {
+                return "\(minutesString(minutes: minutes)):\(shortSecondsString(seconds: seconds))"
+            } else {
+                return shortSecondsString(seconds: seconds)
             }
-            return text
-        } else if minutes != 0 {
-            return shortMinutesString(minutes: minutes)
-        } else {
-            return shortSecondsString(seconds: seconds)
-        }
     }
 
     private func hoursString(hours: Int) -> String {
-        languageService.getResourceString(resourceKey: StringKey().timerHours, params: [hours.toString].toKotlin())
+//        languageService.getResourceString(resourceKey: StringKey().timerHours, params: [hours.toString].toKotlin())
+        return String(format: "%02d", hours)
     }
 
     private func minutesString(minutes: Int) -> String {
-        languageService.getResourceString(resourceKey: StringKey().timerMinutes, params: [minutes.toString].toKotlin())
+//        languageService.getResourceString(resourceKey: StringKey().timerMinutes, params: [minutes.toString].toKotlin())
+        return String(format: "%02d", minutes)
     }
-
+    
+    // - Not sure what by "short minute string" was meant, so made it to behave as method above
     private func shortMinutesString(minutes: Int) -> String {
-        languageService.getResourceString(resourceKey: StringKey().timeMinutesShort, params: [minutes.toString].toKotlin())
+//        languageService.getResourceString(resourceKey: StringKey().timeMinutesShort, params: [minutes.toString].toKotlin())
+        return String(format: "%02d", minutes)
     }
 
     private func shortSecondsString(seconds: Int) -> String {
-        languageService.getResourceString(resourceKey: StringKey().timeSecondsShort, params: [seconds.toString].toKotlin()).trimmingCharacters(in: .whitespaces)
+//        languageService.getResourceString(resourceKey: StringKey().timeSecondsShort, params: [seconds.toString].toKotlin()).trimmingCharacters(in: .whitespaces)
+        return String(format: "%02d", seconds)
     }
 }

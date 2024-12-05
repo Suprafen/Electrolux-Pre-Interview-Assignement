@@ -21,25 +21,26 @@ import SwiftUI
  */
 
 struct CircularProgressBar: View {
-
-    @Binding var progress: Float
-    @Binding var text: String
+    // No need for binding here, the view doesn't change passed values
+    var progress: CGFloat
+    var text: String
 
     var body: some View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 8.0)
-                .foregroundColor(Color(0xFF323333 as! CGColor))
+                .foregroundColor(.el_darkGray)
 
             Circle()
-                .trim(from: 0.0, to: CGFloat(min(progress, 1.0)))
+                .trim(from: 0.0, to: progress)
                 .stroke(style: StrokeStyle(lineWidth: 8.0, lineCap: .round, lineJoin: .round))
-                .foregroundColor(Color(0xFFe1ad01 as! CGColor))
+                .foregroundColor(.el_yellow)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear)
 
             Text(text)
-                .foregroundColor(Color(0xFF011e41 as! CGColor))
+                .foregroundColor(.el_navy)
+                .foregroundStyle(.red)
                 .font(.custom("MetricLight", size: 46))
         }
         .frame(width: 234.0, height: 234.0)
